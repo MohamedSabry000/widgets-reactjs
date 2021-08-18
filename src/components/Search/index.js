@@ -17,12 +17,16 @@ const Search = () => {
             setResults(data);
         }
 
-        if (term)
-            search();
+        const timeoutId = setTimeout(()=>{
+            if (term)
+                search();
+        }, 500);
+
+        
 
     }, [term])
 
-    const renderedResults = results.localeCompare(item => {
+    const renderedResults = results.map(item => {
         return <div key={item.pageid} className="item">
             <div className="right floated content">
                 <a 
